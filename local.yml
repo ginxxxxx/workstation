@@ -1,0 +1,8 @@
+---
+- name: bootstrap workstation
+  hosts: localhost
+  become: true
+  gather_facts: no
+
+  roles:
+    - role: robertdebock.bootstrap

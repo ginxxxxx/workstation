@@ -1,0 +1,15 @@
+---
+# tasks file for microsoft_repository_keys
+
+- name: Add apt key
+  ansible.builtin.apt_key:
+    url: "{{ microsoft_repository_keys_url }}"
+    state: present
+  when:
+    - ansible_os_family == "Debian"
+
+- name: Add rpm key
+  ansible.builtin.rpm_key:
+    key: "{{ microsoft_repository_keys_url }}"
+  when:
+    - ansible_os_family == "RedHat"

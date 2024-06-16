@@ -1,2 +1,5 @@
 ---
 - robertdebock.bootstrap
+- robertdebock.ca_certificates
+- robertdebock.microsoft_repository_keys
+- robertdebock.code

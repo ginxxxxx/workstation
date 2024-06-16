@@ -1,11 +1,10 @@
 ---
-- name: bootstrap workstation
-  hosts: localhost
+- name: Prepare
+  hosts: all
   become: true
-  gather_facts: no
+  gather_facts: false
 
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.ca_certificates
     - role: robertdebock.microsoft_repository_keys
-    - role: robertdebock.code

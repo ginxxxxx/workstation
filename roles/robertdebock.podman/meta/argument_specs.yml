@@ -1,0 +1,17 @@
+---
+
+argument_specs:
+  main:
+    short_description: "Install and configure podman on your system."
+    description: >
+      Install and configure podman on your system.
+    author: Robert de Bock
+    options:
+      podman_storage:
+        type: "list"
+        required: false
+        description: "All configurations of the storage configuration."
+      podman_user:
+        type: "str"
+        required: false
+        description: "The user to run podman under."

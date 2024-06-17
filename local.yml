@@ -6,8 +6,8 @@
 
   vars:
     python_pip_modules:
-      - ansible-navigator
-      - ansible-builder
+      - name: ansible-navigator
+      - name: ansible-builder
     podman_user: "magneto"
 
   roles:

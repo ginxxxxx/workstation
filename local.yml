@@ -1,9 +1,14 @@
 ---
 - name: bootstrap workstation
   hosts: localhost
-  become: true
+  # become: true
+  # user: fuji
+  # become_method: sudo
 
   vars:
 
+  tasks:
+
   roles:
     - role: geerlingguy.java
+    - role: ubuntu

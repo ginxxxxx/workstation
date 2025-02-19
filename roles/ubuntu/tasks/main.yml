@@ -1,0 +1,37 @@
+---
+# tasks file for roles/ubuntu
+- name: Update and upgrade apt
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 3600
+    upgrade: yes
+
+- name: Install age
+  ansible.builtin.apt:
+    name: age
+    state: present
+
+- name: Install SOPS on localhost
+  ansible.builtin.include_role:
+    name: community.sops.install
+  vars:
+    sops_install_on_localhost: true
+
+- name: Create a SOPS config directory if it does not exist
+  ansible.builtin.file:
+    path: /home/fuji/.config/sops/age
+    state: directory
+    mode: '0700'
+
+# When decrypting a file with the corresponding identity, SOPS will look for a text file name keys.txt located in a sops subdirectory of your user configuration directory. On Linux, this would be $XDG_CONFIG_HOME/sops/age/keys.txt. If $XDG_CONFIG_HOME is not set $HOME/.config/sops/age/keys.txt is used instead. On macOS, this would be $HOME/Library/Application Support/sops/age/keys.txt. On Windows, this would be %AppData%\sops\age\keys.txt. You can specify the location of this file manually by setting the environment variable SOPS_AGE_KEY_FILE. Alternatively, you can provide the key(s) directly by setting the SOPS_AGE_KEY environment variable.
+
+- name:  generate-age-key, create the Sops Age key
+  command: "age-keygen --output /home/fuji/.config/sops/age/keys.txt"
+#    status:
+#      - test -f {{.SOPS_AGE_KEY_FILE}}
+
+# - name : Install vs code from .deb file
+#  apt: 
+#    deb: https:// 
+#    state: present

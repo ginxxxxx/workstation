@@ -2,19 +2,8 @@
 - name: bootstrap workstation
   hosts: localhost
   become: true
-  gather_facts: no
 
   vars:
-    python_pip_modules:
-      - name: ansible-navigator
-      - name: ansible-builder
-    podman_user: "magneto"
 
   roles:
-    - role: robertdebock.bootstrap
-    - role: robertdebock.buildtools
-    - role: robertdebock.python_pip
-    - role: robertdebock.ca_certificates
-    - role: robertdebock.microsoft_repository_keys
-    - role: robertdebock.code
-    - role: robertdebock.podman
+    - role: geerlingguy.java

@@ -1,8 +1,1 @@
----
-- robertdebock.bootstrap
-- robertdebock.buildtools
-- robertdebock.python_pip
-- robertdebock.ca_certificates
-- robertdebock.microsoft_repository_keys
-- robertdebock.code
-- robertdebock.podman
+- name: geerlingguy.java
